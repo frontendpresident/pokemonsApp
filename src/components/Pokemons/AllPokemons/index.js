@@ -1,10 +1,9 @@
 import { Pagination, Row } from "antd";
 import { inject, observer } from "mobx-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PokemonCard } from "../PokemonsCard";
 import NotFound from "../../NotFound";
 import PokemonInfoModal from "../PokemonsInfoModal";
-import Loading from "../../Loader";
 
 const AllPokemons = inject("store")(
   observer(({ store }) => {
@@ -62,12 +61,11 @@ const AllPokemons = inject("store")(
     };
 
     const handleChangeSizePage = (current, size) => {
-      console.log(`current`, current);
       return (pageSize = size);
     };
 
     return !isNotFound ? (
-      <>
+      <React.Fragment>
         <div className="wrapper">
           <Row justify="center">
             {pagination.data.map(
@@ -100,7 +98,7 @@ const AllPokemons = inject("store")(
             style={{ textAlign: "center", padding: "16px 0" }}
           />
         )}
-      </>
+      </React.Fragment>
     ) : (
       <NotFound />
     );

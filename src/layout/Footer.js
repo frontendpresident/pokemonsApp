@@ -9,7 +9,7 @@ const FooterContent = () => {
     <Footer className="footer">
       <Row justify="space-around" align="middle">
         <img className="ball" src={ball} alt="ball" />
-        <h1>©2021 by Sregey M.</h1>
+        <h1>©2021 by Sergey M.</h1>
         <img className="ball" src={ball} alt="ball" />
       </Row>
     </Footer>

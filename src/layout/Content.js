@@ -1,4 +1,4 @@
-import { Col, Layout } from "antd";
+import { Layout } from "antd";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
 import React from "react";
@@ -11,6 +11,7 @@ const { Content } = Layout;
 const ContentContainer = inject("store")(
   observer(({ store }) => {
     const { isLoading, pokemons } = store;
+    
     return (
       <Content className="content">
         {!isLoading ? (
@@ -19,7 +20,7 @@ const ContentContainer = inject("store")(
             <AllPokemons />
           </>
         ) : (
-            <Loading total={pokemons.length} />
+          <Loading total={pokemons.length} />
         )}
       </Content>
     );

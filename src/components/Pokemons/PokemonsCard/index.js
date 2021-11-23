@@ -11,6 +11,7 @@ const Container = styled.div`
   padding: 20px;
   margin: 5px;
   border-radius: 3px;
+  cursor: pointer;
 `;
 
 export const PokemonCard = ({ name, avatar, type }) => {
