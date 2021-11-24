@@ -11,7 +11,7 @@ const { Content } = Layout;
 const ContentContainer = inject("store")(
   observer(({ store }) => {
     const { isLoading, pokemons } = store;
-    
+
     return (
       <Content className="content">
         {!isLoading ? (

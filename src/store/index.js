@@ -15,7 +15,6 @@ class PokemonsStore {
   searchResult = [];
   isNotFound = false;
 
-
   constructor() {
     makeAutoObservable(this);
   }
