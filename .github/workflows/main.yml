@@ -45,5 +45,5 @@ jobs:
       
         with:
           node-version: '15'
-      - run: npm run cypress  
+      - run: npm run test  
          
