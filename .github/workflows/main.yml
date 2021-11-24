@@ -27,7 +27,7 @@ jobs:
     
   test_App:
     runs-on: ubuntu-latest
+  
     steps:
-    
-      - name: Test_job
-      - run: echo Test
+     - name: Test_job
+     - run: echo Test
