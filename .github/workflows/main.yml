@@ -29,5 +29,7 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
+     - uses: actions/checkout@v2
+     
      - name: Test_job
      - run: echo Test
