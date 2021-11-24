@@ -24,3 +24,10 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+    
+  test_App:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Test_job
+      - run: echo Test
