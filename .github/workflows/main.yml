@@ -25,14 +25,6 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
    
-  test:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Test
-        run: echo Test
         
   nodeTest:   
     runs-on: ubuntu-latest
@@ -44,5 +36,7 @@ jobs:
         with:
           node-version: '15'
       - run: npm install
+      - run: prettier --write src*
       - run: npm run test
+      - run: npm run cypress
          
