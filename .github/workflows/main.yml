@@ -8,8 +8,6 @@ on:
   pull_request:
     branches: [ main ]
 
-  workflow_dispatch:
-
 jobs:
 
   build:   
@@ -24,19 +22,19 @@ jobs:
           node-version: '15'
       
       - name: Install dependencies
-      - run: npm install
+        run: npm install
       
       - name: Run unit tests
-      - run: npm run test
+        run: npm run test
       
       - name: Run e2e test
-      - run: npm run test:cypress
+        run: npm run test:cypress
       
       - name: Run prettier
         run: npm run prettier
       
       - name: Rin lint
-      - run: npm run lint
+        run: npm run lint
 
 
          
