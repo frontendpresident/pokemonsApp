@@ -14,6 +14,7 @@ class PokemonsStore {
   filtredStatus = "all";
   searchResult = [];
   isNotFound = false;
+  pageSize = 40;
 
   constructor() {
     makeAutoObservable(this);
@@ -34,10 +35,12 @@ class PokemonsStore {
 
   getAllPokemons = () => {
     this.isLoading = true;
-    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=800&offset=0`).then((response) => {
-      this.allPokemons = response.data.results;
-      this.getPokemonsInfo();
-    });
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon?limit=800&offset=0`)
+      .then((response) => {
+        this.allPokemons = response.data.results;
+        this.getPokemonsInfo();
+      });
   };
 
   pokemonInfoModalControl = (boolean) => {
@@ -103,6 +106,10 @@ class PokemonsStore {
     } else {
       this.isNotFound = false;
     }
+  };
+
+  setPageSize = (current, size) => {
+    this.pageSize = size;
   };
 }
 

@@ -1,7 +1,7 @@
 import { Pagination, Row } from "antd";
 import { inject, observer } from "mobx-react";
-import React, { useEffect, useState } from "react";
-import { PokemonCard } from "../PokemonsCard";
+import { useEffect, useState } from "react";
+import PokemonCard from "../PokemonsCard";
 import NotFound from "../../NotFound";
 import PokemonInfoModal from "../PokemonsInfoModal";
 
@@ -21,30 +21,27 @@ const AllPokemons = inject("store")(
       filtredStatus,
       searchResult,
       isNotFound,
+      pageSize,
+      setPageSize,
     } = store;
 
-    let pageSize = 40;
-
-    const checkPokemonsData = () => {
+    useEffect(() => {
       if (filtredStatus === "all") {
-        return setPagination({
+        setPagination({
           ...pagination,
           data: pokemons,
           minIndex: 0,
           maxIndex: pageSize,
         });
+      } else {
+        setPagination({
+          ...pagination,
+          data: searchResult,
+          minIndex: 0,
+          maxIndex: pageSize,
+        });
       }
-      return setPagination({
-        ...pagination,
-        data: searchResult,
-        minIndex: 0,
-        maxIndex: pageSize,
-      });
-    };
-
-    useEffect(() => {
-      checkPokemonsData();
-    }, [pokemons, searchResult]);
+    }, [pokemons, searchResult, pageSize, filtredStatus, pagination]);
 
     const handleChange = (page) => {
       setPagination({
@@ -60,19 +57,18 @@ const AllPokemons = inject("store")(
       pokemonInfoModalControl(true);
     };
 
-    const handleChangeSizePage = (current, size) => {
-      return (pageSize = size);
-    };
-
     return !isNotFound ? (
-      <React.Fragment>
+      <>
         <div className="wrapper">
           <Row justify="center">
             {pagination.data.map(
               (pokemon, index) =>
                 index >= pagination.minIndex &&
                 index < pagination.maxIndex && (
-                  <div key={pokemon.id} onClick={() => handlePokemonInfoModalControl(pokemon)}>
+                  <div
+                    key={pokemon.id}
+                    onClick={() => handlePokemonInfoModalControl(pokemon)}
+                  >
                     <PokemonCard
                       name={pokemon.name}
                       avatar={pokemon.sprites.front_default}
@@ -93,12 +89,12 @@ const AllPokemons = inject("store")(
             showTotal={(total) => `Total ${total} items`}
             onChange={handleChange}
             showSizeChanger
-            onShowSizeChange={handleChangeSizePage}
+            onShowSizeChange={(current, size) => setPageSize(current, size)}
             showQuickJumper
             style={{ textAlign: "center", padding: "16px 0" }}
           />
         )}
-      </React.Fragment>
+      </>
     ) : (
       <NotFound />
     );

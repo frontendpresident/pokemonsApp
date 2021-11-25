@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import "./style.css";
 
@@ -14,11 +13,11 @@ const Container = styled.div`
   cursor: pointer;
 `;
 
-export const PokemonCard = ({ name, avatar, type }) => {
-  return (
-    <Container className={`pokemons-${type}`}>
-      <img src={avatar} alt={`${name}`} />
-      <p className="pokemon-name">{name}</p>
-    </Container>
-  );
-};
+const PokemonCard = ({ name, avatar, type }) => (
+  <Container className={`pokemons-${type}`}>
+    <img src={avatar} alt={`${name}`} />
+    <p className="pokemon-name">{name}</p>
+  </Container>
+);
+
+export default PokemonCard;

@@ -3,7 +3,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Token: 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
+Token: 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
 
 ## Available Scripts
 

@@ -1,7 +1,6 @@
 import { Layout } from "antd";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
-import React from "react";
 import Loading from "../components/Loader";
 import AllPokemons from "../components/Pokemons/AllPokemons";
 import SearchModule from "../components/Search";

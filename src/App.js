@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import store from "./store";
+import { useEffect } from "react";
 import { Provider } from "mobx-react";
+import store from "./store";
 import Pokemons from "./layout";
 
 const App = () => {

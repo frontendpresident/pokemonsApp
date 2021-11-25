@@ -10,7 +10,9 @@ const PokemonInfoModal = inject("store")(
         visible={pokemonInfoVisible}
         onCancel={() => pokemonInfoModalControl(false)}
         onOk={() => pokemonInfoModalControl(true)}
-        footer={<Button onClick={() => pokemonInfoModalControl(false)}>Cancel</Button>}
+        footer={
+          <Button onClick={() => pokemonInfoModalControl(false)}>Cancel</Button>
+        }
       >
         {pokemonInfo !== null && (
           <Card className="card-pokemon-info">
@@ -25,28 +27,34 @@ const PokemonInfoModal = inject("store")(
               className="pokemon-info-avatar"
             />
             <div className="pokemon-info-block">
-              {pokemonInfo.stats.map((stat, index) => {
-                return (
-                  <div key={index * 78} className="pokemon-info-stats">
-                    <h3 style={{ textTransform: "uppercase" }}>{stat.stat.name}</h3>
-                    <h3 style={{ textTransform: "uppercase" }}>{stat.base_stat}</h3>
-                  </div>
-                );
-              })}
+              {pokemonInfo.stats.map((stat) => (
+                <div key={Math.random() * 78} className="pokemon-info-stats">
+                  <h3 style={{ textTransform: "uppercase" }}>
+                    {stat.stat.name}
+                  </h3>
+                  <h3 style={{ textTransform: "uppercase" }}>
+                    {stat.base_stat}
+                  </h3>
+                </div>
+              ))}
               <Row
                 justify="space-between"
                 align="top"
-                style={{ borderBottom: "1px solid black", paddingRight: "20px" }}
+                style={{
+                  borderBottom: "1px solid black",
+                  paddingRight: "20px",
+                }}
               >
                 <h3>TYPES</h3>
                 <ul>
-                  {pokemonInfo.types.map((type) => {
-                    return (
-                      <li key={pokemonInfo.id} style={{ textTransform: "uppercase" }}>
-                        <h3>{type.type.name}</h3>
-                      </li>
-                    );
-                  })}
+                  {pokemonInfo.types.map((type) => (
+                    <li
+                      key={pokemonInfo.id}
+                      style={{ textTransform: "uppercase" }}
+                    >
+                      <h3>{type.type.name}</h3>
+                    </li>
+                  ))}
                 </ul>
               </Row>
             </div>

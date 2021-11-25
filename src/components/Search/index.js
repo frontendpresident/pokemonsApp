@@ -1,4 +1,3 @@
-import React from "react";
 import { Row, Input } from "antd";
 import { inject } from "mobx-react";
 import { observer } from "mobx-react-lite";
